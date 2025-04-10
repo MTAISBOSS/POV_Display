@@ -1,2 +1,232 @@
-# POV_Display
-Created POV display using raspberry pi pico
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        h2 {
+            color: #6e8efb;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        .step {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .step-number {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #a777e3;
+            color: white;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom-right-radius: 8px;
+            font-weight: bold;
+        }
+        .step-content {
+            margin-left: 40px;
+        }
+        code {
+            background: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .feature {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .feature h3 {
+            margin-top: 0;
+            color: #6e8efb;
+        }
+        .note {
+            background: #fff8e1;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>POV Display Project</h1>
+        <p>Create mesmerizing persistence-of-vision displays with LEDs and a hall effect sensor</p>
+    </div>
+
+    <h2>🌟 Project Overview</h2>
+    <p>This project creates a Persistence of Vision (POV) display using LEDs mounted on a rotating platform. When spun, it displays text, animations, and even a clock through precise timing of LED activation.</p>
+
+    <div class="feature-list">
+        <div class="feature">
+            <h3>🔄 Rotation Detection</h3>
+            <p>Uses a hall effect sensor to detect rotation and synchronize the display</p>
+        </div>
+        <div class="feature">
+            <h3>🕒 Time Display</h3>
+            <p>Shows current time (hours, minutes, seconds) in a digital format</p>
+        </div>
+        <div class="feature">
+            <h3>💖 Custom Animations</h3>
+            <p>Includes special animations like hearts and hypnotic patterns</p>
+        </div>
+        <div class="feature">
+            <h3>🎵 Lyric Sync</h3>
+            <p>Can display song lyrics synchronized with playback timing</p>
+        </div>
+    </div>
+
+    <h2>🛠️ Hardware Requirements</h2>
+    <ul>
+        <li>Microcontroller (supports MicroPython)</li>
+        <li>8 LEDs (connected to pins 7-14)</li>
+        <li>2 additional "beauty" LEDs (pins 6 and 15)</li>
+        <li>Hall effect sensor (pin 16)</li>
+        <li>Magnet (for triggering the hall sensor)</li>
+        <li>Rotating platform (fan, motor, or manually spun)</li>
+    </ul>
+
+    <h2>🚀 Setup Guide</h2>
+
+    <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+            <h3>Hardware Assembly</h3>
+            <p>Connect all components according to the pin configuration:</p>
+            <pre>led_pins = [Pin(i, Pin.OUT) for i in range(7, 15)]
+
+beauty_leds = [Pin(6, Pin.OUT), Pin(15, Pin.OUT)]
+hall_sensor = Pin(16, Pin.IN, Pin.PULL_UP)</pre>
+<p>Mount the LEDs vertically on your rotating platform and position the hall sensor so it's triggered once per rotation.</p>
+</div>
+</div>
+
+    <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+            <h3>Upload the Code</h3>
+            <p>Copy the provided Python code to your microcontroller. The main components are:</p>
+            <ul>
+                <li>LED pattern definitions for numbers and letters</li>
+                <li>Time-keeping functions</li>
+                <li>Display functions for text, time, and animations</li>
+                <li>Main loop with hall sensor detection</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+            <h3>Customize Your Display</h3>
+            <p>Modify these variables to change what's displayed:</p>
+            <pre>text_to_show = "ATM"  # Change to your desired text
+
+COLUMN_DELAY = 0.001 # Adjust for rotation speed
+DIGIT_SPACE = 2 # Space between characters</pre>
+<p>You can also add custom patterns to the <code>characters</code> dictionary or create new animations.</p>
+</div>
+</div>
+
+    <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+            <h3>Power Up and Spin</h3>
+            <p>Power your microcontroller and spin the display. The hall sensor will detect each rotation and trigger the display.</p>
+            <p>The code includes different display modes that activate based on time:</p>
+            <ul>
+                <li>0-15s: LEDs turn on one by one</li>
+                <li>15-30s: Hypnotic swirling pattern</li>
+                <li>30-45s: Ping-pong LED effect</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>🎨 Customization Options</h2>
+    <div class="note">
+        <p><strong>Pro Tip:</strong> The display timing is critical. Adjust <code>COLUMN_DELAY</code> based on your rotation speed for optimal results.</p>
+    </div>
+
+    <h3>Adding New Characters</h3>
+    <p>Extend the <code>characters</code> dictionary with your own 5-column patterns:</p>
+    <pre>characters = {
+    # ... existing characters ...
+    "!": [0b00000000, 0b00000000, 0b11111000, 0b00000000, 0b00000000],
+    "?": [0b01000000, 0b10000000, 0b10001000, 0b01010000, 0b00100000],
+    # Add more characters here
+
+}</pre>
+
+    <h3>Creating Animations</h3>
+    <p>Define new animation patterns as arrays of byte patterns:</p>
+    <pre>def my_animation():
+    pattern = [
+        0b00000001,
+        0b00000011,
+        0b00000111,
+        # ... more frames ...
+    ]
+    while True:
+        for col in pattern:
+            clear_leds()
+            send_to_pins(col)
+            sleep(COLUMN_DELAY)</pre>
+
+    <h2>🔧 Troubleshooting</h2>
+    <ul>
+        <li><strong>Display appears blurry:</strong> Adjust <code>COLUMN_DELAY</code> to match your rotation speed</li>
+        <li><strong>Hall sensor not triggering:</strong> Check magnet alignment and sensor connections</li>
+        <li><strong>LEDs not lighting:</strong> Verify your pin connections and LED orientations</li>
+    </ul>
+
+    <h2>📜 License</h2>
+    <p>This project is open-source. Feel free to modify and share!</p>
+
+</body>
+</html>
