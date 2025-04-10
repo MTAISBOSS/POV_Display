@@ -2,4 +2,8 @@
 
 ## Documentation and Project Overview
 
-[View Interactive README](https://htmlpreview.github.io/?https://github.com/MTAISBOSS/POV_Display/blob/main/docs/index.html)
+[Click Here To See The Documentation](https://htmlpreview.github.io/?https://github.com/MTAISBOSS/POV_Display/blob/main/docs/index.html)
+
+## Diagram
+
+![POV Display Diagram](/pov_display_diagram.png "Diagram")
